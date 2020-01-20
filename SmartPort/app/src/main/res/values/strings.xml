@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">SmartPort</string>
+    <string name="selectedFlights">Your Selected Flights</string>
+    <string name="viewYourSelectedFlights">View Your Selected Flights</string>
+    <string name="flightInformation">Your Flight Information</string>
+    <string name="viewYourFlightInformation">View Your Selected Flights Information</string>
+    <string name="pointsOfInterest">Points of Interest</string>
+    <string name="userProfile">User Profile</string>
+    <string name="viewProfile">View your User Profile Page</string>
+    <string name="viewYourPointsOfInterest">View Your Points of Interest</string>
+    <string name="logout">Logout</string>
+    <string name="logoutandreturn">Logout and return to start page</string>
+</resources>

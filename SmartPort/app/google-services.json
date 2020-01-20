@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "751465871806",
+    "firebase_url": "https://smartport-68b3c.firebaseio.com",
+    "project_id": "smartport-68b3c",
+    "storage_bucket": "smartport-68b3c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:751465871806:android:41d10b6c8f9aa08c3561ef",
+        "android_client_info": {
+          "package_name": "com.example.smartport"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "751465871806-5mg518e571v0oimoetbklggaiovj10mi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOwQUcZ9mvB5qwYCXVF1hBgBoG2E-cP4I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "751465871806-5mg518e571v0oimoetbklggaiovj10mi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -9,5 +9,12 @@
     <string name="viewProfile">View your User Profile Page</string>
     <string name="viewYourPointsOfInterest">View Your Points of Interest</string>
     <string name="logout">Logout</string>
+    <string name="login">Login</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="signup">Sign Up</string>
+    <string name="password">Password</string>
+    <string name="JoinUs">Join Us!</string>
+    <string name="createAccount">Create Your Account!</string>
     <string name="logoutandreturn">Logout and return to start page</string>
 </resources>

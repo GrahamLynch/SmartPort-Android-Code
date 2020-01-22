@@ -8,6 +8,7 @@ import android.icu.text.IDNA;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.app.ProgressDialog;
@@ -24,6 +25,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private TextView studentRegistration, emailAddress, password;
+    ImageView back;
     FirebaseUser user;
     Button login;
     int counter = 5;
@@ -35,10 +37,10 @@ public class LoginActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
-        login = (Button) findViewById(R.id.login_btn);
+        login = (Button) findViewById(R.id.loginBtn);
+        back = (ImageView) findViewById(R.id.goBack);
 
 
-        studentRegistration = (TextView) findViewById(R.id.textViewRegister);
         emailAddress = (TextView) findViewById(R.id.email);
         password = (TextView) findViewById(R.id.password);
 
@@ -53,17 +55,6 @@ public class LoginActivity extends AppCompatActivity {
                 validate(emailAddress.getText().toString(), password.getText().toString());
             }
         });
-
-        studentRegistration.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this, Registration.class));
-            }
-        });
-
-
-
 
 
     }
@@ -105,5 +96,10 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, "Verify your Student Email", Toast.LENGTH_SHORT).show();
             firebaseAuth.signOut();
         }
+    }
+
+    public void goback(View view) {
+        Intent i = new Intent(LoginActivity.this, Registration.class);
+        startActivity(i);
     }
 }

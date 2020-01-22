@@ -21,28 +21,26 @@ import com.google.firebase.database.FirebaseDatabase;
 import android.os.Bundle;
 
 public class Registration extends AppCompatActivity {
-    private EditText studentNumber, studentPassword, studentEmail, studentName;
+    private EditText studentNumber, password, email, name;
     private Button regButton;
-    private TextView userLogin;
+
     private FirebaseAuth firebaseAuth;
-    String student_number;
+    TextView login;
     String airline;
-    String student_password;
-    String student_email;
-    String student_name;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         regButton = (Button)findViewById(R.id.registerBtn);
-        userLogin = (TextView) findViewById(R.id.tvUserLogin);
         firebaseAuth =  FirebaseAuth.getInstance();
-        studentPassword = (EditText)findViewById(R.id.etUserPassword);
-        studentEmail = (EditText)findViewById(R.id.etUserEmail);
+        password = (EditText)findViewById(R.id.password);
+        email = (EditText)findViewById(R.id.email);
         airline = "Not";
         regButton  = (Button)findViewById(R.id.registerBtn);
-        userLogin = (TextView)findViewById(R.id.tvUserLogin);
-        studentName = (EditText)findViewById(R.id.nameText);
+        login = (TextView) findViewById(R.id.loginTV);
+        name = (EditText)findViewById(R.id.name);
 
 
         regButton.setOnClickListener(new View.OnClickListener() {
@@ -50,38 +48,30 @@ public class Registration extends AppCompatActivity {
             public void onClick(View view) {
 
                     //Register data to database
-                    String student_email  = studentEmail.getText().toString().trim();
-                    String student_password = studentPassword.getText().toString().trim();
+                    String passenger_email  = email.getText().toString().trim();
+                    String passenger_password = password.getText().toString().trim();
 
-                    firebaseAuth.createUserWithEmailAndPassword(student_email, student_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    firebaseAuth.createUserWithEmailAndPassword(passenger_email, passenger_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-
                             if(task.isSuccessful()){
                                 sendUserData();
-
-
                             }else{
                                 Toast.makeText(Registration.this,  "Student Registration Unsuccessful", Toast.LENGTH_SHORT).show();
                             }
-
-
                         }
                     });
-
-
             }
         });
 
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Intent(Registration.this, LoginActivity.class);
+            }
+        });
 
     }
-
-
-
-
-
-
-
 
     private void sendUserData(){
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();

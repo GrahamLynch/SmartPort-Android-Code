@@ -96,11 +96,11 @@ public class LoginActivity extends AppCompatActivity {
             firebaseAuth.signOut();
         }
     }
-/*
+
     public void goback(View view) {
         Intent i = new Intent(LoginActivity.this, Registration.class);
         startActivity(i);
     }
 
- */
+
 }

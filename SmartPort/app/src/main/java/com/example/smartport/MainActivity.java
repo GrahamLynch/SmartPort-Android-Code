@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         logout.setOnClickListener(this);
 
         notificationManager = NotificationManagerCompat.from(this);
-        Airline = "Your aircraft for your flight to Barcelona has landed!";
+        Airline = "Ryanair has landed!";
         //header = (TextView) findViewById(R.id.textView);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = firebaseDatabase.getInstance();
@@ -70,11 +70,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onDataChange(DataSnapshot dataSnapshot) {
                 UserProfile userProfile = dataSnapshot.getValue(UserProfile.class);
                 flightStatus = userProfile.getFlight();
-                if(flightStatus.equals("Landed")){
+                if(flightStatus.equals("Ryanair")){
                     Notification notification = new NotificationCompat.Builder(MainActivity.this, CHANNEL_1_ID)
-                            .setSmallIcon(R.drawable.plane)
+                            .setSmallIcon(R.drawable.ryanair)
                             .setContentTitle(flightStatus)
-                            .setContentText(Airline)
+                            .setContentText("Ryanair has landed!")
+                            .setPriority(NotificationCompat.PRIORITY_HIGH)
+                            .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                            .build();
+                    notificationManager.notify(1, notification);
+                }
+                else if(flightStatus.equals("Aer Lingus")){
+                    Notification notification = new NotificationCompat.Builder(MainActivity.this, CHANNEL_1_ID)
+                            .setSmallIcon(R.drawable.aerlingus)
+                            .setContentTitle(flightStatus)
+                            .setContentText("Aer Lingus has landed!")
                             .setPriority(NotificationCompat.PRIORITY_HIGH)
                             .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                             .build();

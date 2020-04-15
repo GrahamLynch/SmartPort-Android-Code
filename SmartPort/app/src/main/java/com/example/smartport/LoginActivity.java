@@ -64,7 +64,6 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(LoginActivity.this, "Logging into your account!", Toast.LENGTH_SHORT);
 
 
-
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -97,9 +96,11 @@ public class LoginActivity extends AppCompatActivity {
             firebaseAuth.signOut();
         }
     }
-
+/*
     public void goback(View view) {
         Intent i = new Intent(LoginActivity.this, Registration.class);
         startActivity(i);
     }
+
+ */
 }

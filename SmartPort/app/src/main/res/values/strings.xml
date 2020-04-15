@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">SmartPort</string>
-    <string name="selectedFlights">Your Selected Flights</string>
-    <string name="viewYourSelectedFlights">View Your Selected Flights</string>
+    <string name="selectAFlight">Select a flight</string>
+    <string name="selectAFlightList">Select Your Departing Flight</string>
     <string name="flightInformation">Your Flight Information</string>
     <string name="viewYourFlightInformation">View Your Selected Flights Information</string>
     <string name="pointsOfInterest">Points of Interest</string>

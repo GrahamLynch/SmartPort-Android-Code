@@ -28,7 +28,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
     List<cardItem> mData;
     private FirebaseDatabase firebaseDatabase;
     private FirebaseAuth firebaseAuth;
-    String flight;
+    String airline , flightNumber, destination;
 
 
 
@@ -59,22 +59,33 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
                 DatabaseReference databaseReference = firebaseDatabase.getReference(FirebaseAuth.getInstance().getCurrentUser().getUid());
                 @Override
                 public void onClick(View view) {
-                if (position == 0 || position == 2){
-                    flight = "Ryanair";
+                if (position == 0){
+                    airline = "Ryanair";
+                    flightNumber = "FR 7122";
+                    destination = "Tenerife";
                 }
-                else if (position == 1 || position == 3){
-                        flight = "Aer Lingus";
+                else if (position == 1){
+                    airline = "Aer Lingus";
+                    flightNumber = "EI 520";
+                    destination = "Paris";
                 }
-                    databaseReference.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                                dataSnapshot.getRef().child("flight").setValue(flight);
-
-
-
+                else if (position == 2){
+                    airline = "Ryanair";
+                    flightNumber = "FR 116";
+                    destination = "London";
+                }
+                else {
+                    airline = "Aer Lingus";
+                    flightNumber = "EI 105";
+                    destination = "New York";
+                }
+                databaseReference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        dataSnapshot.getRef().child("airline").setValue(airline);
+                        dataSnapshot.getRef().child("flightNumber").setValue(flightNumber);
+                        dataSnapshot.getRef().child("destination").setValue(destination);
                         }
-
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -83,16 +94,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
                     });
 
 
-
-                    Toast.makeText(view.getContext(),  "Student Registration Unsuccessful " + position, Toast.LENGTH_SHORT).show();
-
-
                 }
 
 
             });
-
-
 
     }
 

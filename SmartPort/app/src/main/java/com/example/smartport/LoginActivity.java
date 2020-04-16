@@ -92,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
             finish();
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
         } else {
-            Toast.makeText(this, "Verify your Student Email", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Verify your Email", Toast.LENGTH_SHORT).show();
             firebaseAuth.signOut();
         }
     }

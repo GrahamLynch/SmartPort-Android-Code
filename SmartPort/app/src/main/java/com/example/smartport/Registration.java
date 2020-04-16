@@ -21,12 +21,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import android.os.Bundle;
 
 public class Registration extends AppCompatActivity {
-    private EditText studentNumber, password, email, name;
+    private EditText  password, email, name;
     private Button regButton;
 
     private FirebaseAuth firebaseAuth;
     TextView login;
-    String airline;
+    String airline, flightnumber, destination, passenger_name, flightStatus, landingTime;
 
 
     @Override
@@ -37,7 +37,11 @@ public class Registration extends AppCompatActivity {
         firebaseAuth =  FirebaseAuth.getInstance();
         password = (EditText)findViewById(R.id.password);
         email = (EditText)findViewById(R.id.email);
-        airline = "Not";
+        airline = "";
+        destination = "";
+        flightStatus = "Not Landed";
+        landingTime = "";
+        flightnumber = "";
         regButton  = (Button)findViewById(R.id.registerBtn);
         login = (TextView) findViewById(R.id.loginTV);
         name = (EditText)findViewById(R.id.name);
@@ -50,6 +54,7 @@ public class Registration extends AppCompatActivity {
                     //Register data to database
                     String passenger_email  = email.getText().toString().trim();
                     String passenger_password = password.getText().toString().trim();
+                    passenger_name = name.getText().toString().trim();
 
                     firebaseAuth.createUserWithEmailAndPassword(passenger_email, passenger_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
@@ -58,7 +63,7 @@ public class Registration extends AppCompatActivity {
                                 sendUserData();
                                 new Intent(Registration.this, LoginActivity.class);
                             }else{
-                                Toast.makeText(Registration.this,  "Student Registration Unsuccessful", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Registration.this,  "Registration Unsuccessful", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -77,7 +82,7 @@ public class Registration extends AppCompatActivity {
     private void sendUserData(){
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference myRef = firebaseDatabase.getReference(firebaseAuth.getUid());
-        UserProfile userProfile = new UserProfile(airline);
+        UserProfile userProfile = new UserProfile(airline , flightnumber, destination, flightStatus, landingTime, passenger_name);
         myRef.setValue(userProfile);
     }
 }

@@ -29,10 +29,9 @@ import static com.example.smartport.App.CHANNEL_1_ID;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private NotificationManagerCompat notificationManager;
     private CardView selectedFlights, flightInformation, pointsOfInterest, userProfile, logout;
-    private String flightStatus;
+    private String airline, flightStatus;
     private int num1 = 1;
     FirebaseUser user;
-    TextView tview;
     Boolean status = true;
     private TextView header;
     private String Airline;
@@ -57,39 +56,42 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         logout.setOnClickListener(this);
 
         notificationManager = NotificationManagerCompat.from(this);
-        Airline = "Ryanair has landed!";
-        //header = (TextView) findViewById(R.id.textView);
+
+
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = firebaseDatabase.getInstance();
         user = firebaseAuth.getCurrentUser();
-        Button b1;
 
         DatabaseReference databaseReference = firebaseDatabase.getReference(FirebaseAuth.getInstance().getCurrentUser().getUid());
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 UserProfile userProfile = dataSnapshot.getValue(UserProfile.class);
-                flightStatus = userProfile.getFlight();
-                if(flightStatus.equals("Ryanair")){
+                airline = userProfile.getAirline();
+                flightStatus = userProfile.getFlightStatus();
+
+                if(airline != null && airline.equals("Ryanair") && flightStatus.equals("Landed")){
                     Notification notification = new NotificationCompat.Builder(MainActivity.this, CHANNEL_1_ID)
                             .setSmallIcon(R.drawable.ryanair)
-                            .setContentTitle(flightStatus)
+                            .setContentTitle("Ryanair")
                             .setContentText("Ryanair has landed!")
                             .setPriority(NotificationCompat.PRIORITY_HIGH)
                             .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                             .build();
                     notificationManager.notify(1, notification);
                 }
-                else if(flightStatus.equals("Aer Lingus")){
+
+                else if(airline != null  && airline.equals("Aer Lingus") && flightStatus.equals("Landed")){
                     Notification notification = new NotificationCompat.Builder(MainActivity.this, CHANNEL_1_ID)
                             .setSmallIcon(R.drawable.aerlingus)
-                            .setContentTitle(flightStatus)
+                            .setContentTitle("Aer Lingus")
                             .setContentText("Aer Lingus has landed!")
                             .setPriority(NotificationCompat.PRIORITY_HIGH)
                             .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                             .build();
                     notificationManager.notify(1, notification);
                 }
+
             }
 
             @Override
@@ -98,6 +100,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
         });
+
+
+
+
 
     }
 

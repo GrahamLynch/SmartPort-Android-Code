@@ -112,6 +112,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent i;
 
         switch (v.getId()) {
+
             case R.id.yourFlights: i = new Intent(this,FlightsActivity.class); startActivity(i); break;
             case R.id.yourFlightInformation: i = new Intent(this,FlightInformationActivity.class); startActivity(i); break;
             case R.id.pointsOfInterest: i = new Intent(this,PointsOfInterestActivity.class); startActivity(i); break;

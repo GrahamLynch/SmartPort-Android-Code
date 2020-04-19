@@ -101,6 +101,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         });
 
+        if(airline==(null)){
+            flightInformation.setVisibility(View.INVISIBLE);
+        }
+
 
 
 
@@ -123,4 +127,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     }
+
+
 }

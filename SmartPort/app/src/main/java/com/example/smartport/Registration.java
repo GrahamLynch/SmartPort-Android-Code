@@ -14,11 +14,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import android.os.Bundle;
 
 public class Registration extends AppCompatActivity {
     private EditText  password, email, name;
@@ -26,7 +23,7 @@ public class Registration extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
     TextView login;
-    String airline, flightnumber, destination, passenger_name, flightStatus, landingTime;
+    String airline, flightnumber, destination, passenger_name, flightStatus, landingTime, currentAirlineOnRunway;
 
 
     @Override
@@ -38,10 +35,12 @@ public class Registration extends AppCompatActivity {
         password = (EditText)findViewById(R.id.password);
         email = (EditText)findViewById(R.id.email);
         airline = "";
+        currentAirlineOnRunway = "";
         destination = "";
         flightStatus = "Not Landed";
         landingTime = "";
         flightnumber = "";
+
         regButton  = (Button)findViewById(R.id.registerBtn);
         login = (TextView) findViewById(R.id.loginTV);
         name = (EditText)findViewById(R.id.name);
@@ -82,7 +81,7 @@ public class Registration extends AppCompatActivity {
     private void sendUserData(){
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference myRef = firebaseDatabase.getReference(firebaseAuth.getUid());
-        UserProfile userProfile = new UserProfile(airline , flightnumber, destination, flightStatus, landingTime, passenger_name);
+        FlightInfo userProfile = new FlightInfo(airline , currentAirlineOnRunway, flightnumber, destination, flightStatus, landingTime, passenger_name);
         myRef.setValue(userProfile);
     }
 }

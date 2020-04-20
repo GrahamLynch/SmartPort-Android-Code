@@ -1,7 +1,8 @@
 package com.example.smartport;
 
-public class UserProfile {
-    String airline;
+public class FlightInfo {
+    String chosenAirline;
+    String currentAirlineOnRunway;
     String flightNumber;
     String destination;
     String flightStatus;
@@ -9,12 +10,13 @@ public class UserProfile {
     String name;
 
 
-    public UserProfile(){
+    public FlightInfo(){
 
     }
 
-    public UserProfile(String airline, String flightNumber, String destination, String flightStatus, String landingTime, String name) {
-        this.airline = airline;
+    public FlightInfo(String chosenAirline, String currentAirlineOnRunway, String flightNumber, String destination, String flightStatus, String landingTime, String name) {
+        this.chosenAirline = chosenAirline;
+        this.currentAirlineOnRunway = currentAirlineOnRunway;
         this.flightNumber = flightNumber;
         this.destination = destination;
         this.flightStatus = flightStatus;
@@ -22,12 +24,20 @@ public class UserProfile {
         this.name = name;
     }
 
-    public String getAirline() {
-        return airline;
+    public String getChosenAirline() {
+        return chosenAirline;
     }
 
-    public void setAirline(String airline) {
-        this.airline = airline;
+    public void setChosenAirline(String chosenAirline) {
+        this.chosenAirline = chosenAirline;
+    }
+
+    public String getCurrentAirlineOnRunway() {
+        return currentAirlineOnRunway;
+    }
+
+    public void setCurrentAirlineOnRunway(String currentAirlineOnRunway) {
+        this.currentAirlineOnRunway = currentAirlineOnRunway;
     }
 
     public String getFlightNumber() {

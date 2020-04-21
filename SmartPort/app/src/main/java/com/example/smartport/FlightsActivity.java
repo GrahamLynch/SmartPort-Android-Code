@@ -29,16 +29,14 @@ import java.util.List;
 public class FlightsActivity extends AppCompatActivity {
     private RequestQueue mQueue;
     List <cardItem> mlist = new ArrayList<>();
-    Button btn;
-    TextView test;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flights);
         // Set status bar to transparent
         mQueue = Volley.newRequestQueue(this);
-        btn = (Button) findViewById(R.id.button2);
-        test = (TextView) findViewById(R.id.textViewtest);
+
         RecyclerView recyclerView = findViewById(R.id.rv_list);
 
         mlist.add(new cardItem(R.drawable.tenerife, "Ryanair", "Dublin to Tenerife", R.drawable.ryanair));
@@ -50,50 +48,10 @@ public class FlightsActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                jsonParse();
-            }
-        });
+
     }
 
 
 
-    private void jsonParse(){
 
-
-        String url = "http://aviation-edge.com/v2/public/timetable?key=f69c83-32e515&iataCode=DUB&type=departure";
-
-
-
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    JSONArray jsonArray = response.getJSONArray("airline");
-
-//                    for(int i =0; i<jsonArray.length(); i++){            //********Commented out for loop to only get first element searched
-                    JSONObject item = jsonArray.getJSONObject(0);
-
-                    String productName = item.getString("name") + "\n";
-
-                    test.append(productName);
-
-
-//                    }                 //for loop closing brace
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        });
-
-        mQueue.add(request);
-        Toast.makeText(FlightsActivity.this,  "Hello", Toast.LENGTH_SHORT).show();
-    }
 }

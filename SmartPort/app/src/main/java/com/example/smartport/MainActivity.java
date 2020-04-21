@@ -97,12 +97,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         });
 
-
-
-
-
-
-
     }
 
     @Override
@@ -113,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.yourFlights: i = new Intent(this,FlightsActivity.class); startActivity(i); break;
             case R.id.yourFlightInformation: i = new Intent(this,FlightInformationActivity.class); startActivity(i); break;
-            case R.id.pointsOfInterest: i = new Intent(this,PointsOfInterestActivity.class); startActivity(i); break;
+            case R.id.pointsOfInterest: i = new Intent(this,ScheduleActivity.class); startActivity(i); break;
             case R.id.userProfile: i = new Intent(this,UserProfileActivity.class); startActivity(i); break;
             case R.id.logout: i = new Intent(this,LoginActivity.class); startActivity(i); break;
             default: break ;

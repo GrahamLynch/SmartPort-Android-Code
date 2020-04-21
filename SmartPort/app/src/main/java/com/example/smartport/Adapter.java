@@ -85,7 +85,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.myViewHolder> {
                         dataSnapshot.getRef().child("chosenAirline").setValue(airline);
                         dataSnapshot.getRef().child("flightNumber").setValue(flightNumber);
                         dataSnapshot.getRef().child("destination").setValue(destination);
-                        dataSnapshot.getRef().child("flightStatus").setValue("Not Landed");
+
                         }
 
                         @Override

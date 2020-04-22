@@ -24,7 +24,7 @@ import static com.example.smartport.App.CHANNEL_1_ID;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private NotificationManagerCompat notificationManager;
-    private CardView selectedFlights, flightInformation, pointsOfInterest, userProfile, logout;
+    private CardView selectedFlights, flightInformation, pointsOfInterest, userProfile, logout, flightScedhule;
     private String chosenAirline, flightStatus, currentAirlineOnRunway;
     private int num1 = 1;
     FirebaseUser user;
@@ -40,11 +40,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         selectedFlights = (CardView) findViewById(R.id.yourFlights);
+        flightScedhule = (CardView) findViewById(R.id.scedhule);
         flightInformation = (CardView) findViewById(R.id.yourFlightInformation);
         pointsOfInterest = (CardView) findViewById(R.id.pointsOfInterest);
         userProfile = (CardView) findViewById(R.id.userProfile);
         logout = (CardView) findViewById(R.id.logout);
         //Set on Click Listeners
+        flightScedhule.setOnClickListener(this);
         selectedFlights.setOnClickListener(this);
         flightInformation.setOnClickListener(this);
         pointsOfInterest.setOnClickListener(this);
@@ -104,10 +106,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent i;
 
         switch (v.getId()) {
-
+            case R.id.scedhule: i = new Intent(this, ScheduleActivity.class); startActivity(i); break;
             case R.id.yourFlights: i = new Intent(this,FlightsActivity.class); startActivity(i); break;
             case R.id.yourFlightInformation: i = new Intent(this,FlightInformationActivity.class); startActivity(i); break;
-            case R.id.pointsOfInterest: i = new Intent(this,ScheduleActivity.class); startActivity(i); break;
+            case R.id.pointsOfInterest: i = new Intent(this,PointsOfInterestActivity.class); startActivity(i); break;
             case R.id.userProfile: i = new Intent(this,UserProfileActivity.class); startActivity(i); break;
             case R.id.logout: i = new Intent(this,LoginActivity.class); startActivity(i); break;
             default: break ;

@@ -19,54 +19,69 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ScheduleActivity extends AppCompatActivity {
     private RequestQueue mQueue;
     RecyclerView mRecyclerView;
-    RecyclerView.LayoutManager mLayoutManager;
-    RecyclerView.Adapter mAdapter;
-    JSONArray jsonArray;
+    List<Schedule> schedule;
+
+    MainAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule_);
 
-        mQueue = Volley.newRequestQueue(this);
+
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this);
+        schedule = new ArrayList<>();
 
 
+        jsonParse();
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+    public void jsonParse() {
+        mQueue = Volley.newRequestQueue(this);
         String url = "http://aviation-edge.com/v2/public/timetable?key=f69c83-32e515&iataCode=DUB&type=departure";
 
 
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                try {
-                    Log.e("Response", response.toString());
-                    jsonArray = response;
-                    int size = jsonArray.length();
-                    for (int i = 0; i < jsonArray.length(); i++) {            //********Commented out for loop to only get first element searched
-                        JSONObject item = jsonArray.getJSONObject(i);
+                for(int i = 0; i < response.length(); i++){
+                    try {
+                        JSONObject data = response.getJSONObject(i);
+                        JSONObject airlineObject = data.getJSONObject("airline");
+                        JSONObject arrivalObject = data.getJSONObject("arrival");
+                        Schedule schedules = new Schedule();
+                        schedules.setAirline(airlineObject.getString("name"));
+                        schedules.setDestination(arrivalObject.getString("iataCode"));
+                        schedules.setStatus(data.getString("status"));
+                        schedule.add(schedules);
 
-                        String airline = item.getString("airline") + "\n";
-
-                        JSONObject jsonObject2 = item.getJSONObject("flight");
-                        String iatacode = jsonObject2.getString("iataNumber") + "\n";
 
 
-                        System.out.println("Hello" + jsonArray.length());
-                        mAdapter = new MainAdapter(jsonArray);
-                        mRecyclerView.setLayoutManager(mLayoutManager);
-                        mRecyclerView.setAdapter(mAdapter);
-
-                    }                 //for loop closing brace
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
+
+                mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                adapter = new MainAdapter(getApplicationContext() , schedule);
+                mRecyclerView.setAdapter(adapter);
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -78,10 +93,8 @@ public class ScheduleActivity extends AppCompatActivity {
 
         mQueue.add(request);
 
-
-
-
     }
+
 
 }
 

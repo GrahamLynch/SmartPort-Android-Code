@@ -1,5 +1,6 @@
 package com.example.smartport;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,17 +12,18 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
-    JSONArray flightNum;
-    String airlinename = "";
-    String flightnum = "";
-    public MainAdapter(JSONArray flightNum) {
-        this.flightNum = flightNum;
+    LayoutInflater inflater;
+    List<Schedule> schedule;
+    public MainAdapter(Context ctx , List<Schedule> schedule) {
+        this.inflater = LayoutInflater.from(ctx);
+        this.schedule = schedule;
     }
 
 
@@ -36,37 +38,25 @@ class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MainAdapter.ViewHolder holder, int position) {
 
-            for (int i = 0;i < flightNum.length();i++){
-                try {
-                    JSONObject data = flightNum.getJSONObject(i);
-                    JSONObject airlineObject = data.getJSONObject("airline");
-                    JSONObject flightObject = data.getJSONObject("flight");
-
-                    airlinename += airlineObject.getString("name")+"\n";
-                    flightnum += flightObject.getString("iataNumber")+"\n";
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-
-                holder.flightNumber.setText(airlinename + flightnum);
-            }
-
+         holder.airline.setText(schedule.get(position).getAirline());
+         holder.route.setText("DUB - " + schedule.get(position).getDestination());
+         holder.status.setText(schedule.get(position).getStatus());
 
 
     }
 
     @Override
     public int getItemCount() {
-        return flightNum.length();
+        return schedule.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView flightNumber;
+        public TextView airline , route , status;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            flightNumber = (TextView) itemView.findViewById(R.id.flight_num);
+            airline = (TextView) itemView.findViewById(R.id.airline);
+            route = (TextView) itemView.findViewById(R.id.route);
+            status = (TextView) itemView.findViewById(R.id.status);
         }
     }
 }

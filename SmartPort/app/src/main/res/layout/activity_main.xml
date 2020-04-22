@@ -150,7 +150,7 @@
 
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/userProfile"
+            android:id="@+id/scedhule"
             android:layout_width="160dp"
             android:layout_height="190dp"
             android:layout_margin="10dp">
@@ -163,30 +163,35 @@
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:background="@drawable/circlebackgroundmiddarkblue"
-                    android:src="@drawable/userprofile"
+                    android:src="@drawable/calendar"
                     android:padding="10dp"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
                     android:layout_marginTop="10dp"
-                    android:text="@string/userProfile"/>
+                    android:text="@string/scedhule"
+                    android:textStyle="bold" />
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/lightGrey"
                     android:layout_margin="10dp"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@string/viewProfile"
                     android:padding="5dp"
-                    android:textColor="@android:color/darker_gray"/>
+                    android:text="@string/viewScedhule"
+                    android:textColor="@android:color/darker_gray" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
     </LinearLayout>
+
+
+
+
 
     <LinearLayout
         android:clipToPadding="false"
@@ -194,10 +199,47 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/userProfile"
+        android:layout_width="160dp"
+        android:layout_height="190dp"
+        android:layout_margin="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/circlebackgroundmiddarkblue"
+                android:src="@drawable/userprofile"
+                android:padding="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:text="@string/userProfile"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/lightGrey"
+                android:layout_margin="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/viewProfile"
+                android:padding="5dp"
+                android:textColor="@android:color/darker_gray"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
         <androidx.cardview.widget.CardView
             android:id="@+id/logout"
-            android:layout_width="340dp"
-            android:layout_height="150dp"
+            android:layout_width="160dp"
+            android:layout_height="190dp"
             android:layout_margin="10dp">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -209,30 +251,32 @@
                     android:layout_height="70dp"
                     android:background="@drawable/circlebackgroundmiddarkblue"
                     android:src="@drawable/logout"
-                    android:padding="15dp"/>
+                    android:padding="10dp"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
                     android:layout_marginTop="10dp"
-                    android:text="@string/logout"/>
+                    android:text="@string/logout"
+                    android:textStyle="bold" />
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/lightGrey"
                     android:layout_margin="10dp"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@string/logoutandreturn"
                     android:padding="5dp"
-                    android:textColor="@android:color/darker_gray"/>
+                    android:text="@string/logoutandreturn"
+                    android:textColor="@android:color/darker_gray" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
 
     </LinearLayout>
 
 
 </LinearLayout>
+

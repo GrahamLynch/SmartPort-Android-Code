@@ -3,11 +3,13 @@
     <string name="selectAFlight">Select a flight</string>
     <string name="selectAFlightList">Select Your Departing Flight</string>
     <string name="flightError">Please Select a Flight</string>
+    <string name="scedhule">Scedhule</string>
     <string name="flightInformation">Your Flight Information</string>
     <string name="viewYourFlightInformation">View Your Selected Flights Information</string>
     <string name="pointsOfInterest">Points of Interest</string>
     <string name="userProfile">User Profile</string>
     <string name="viewProfile">View your User Profile Page</string>
+    <string name="viewScedhule">View all of todays flights</string>
     <string name="viewYourPointsOfInterest">View Your Points of Interest</string>
     <string name="logout">Logout</string>
     <string name="login">Login</string>

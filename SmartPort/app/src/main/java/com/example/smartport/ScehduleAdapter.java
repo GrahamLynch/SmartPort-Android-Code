@@ -6,22 +6,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
+class ScehduleAdapter extends RecyclerView.Adapter<ScehduleAdapter.ViewHolder> {
 
     LayoutInflater inflater;
     List<Schedule> schedule;
-    public MainAdapter(Context ctx , List<Schedule> schedule) {
+    public ScehduleAdapter(Context ctx , List<Schedule> schedule) {
         this.inflater = LayoutInflater.from(ctx);
         this.schedule = schedule;
     }
@@ -30,13 +24,13 @@ class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
     @NonNull
     @Override
-    public MainAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row,parent,false);
+    public ScehduleAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.scedhule_design,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MainAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ScehduleAdapter.ViewHolder holder, int position) {
 
          holder.airline.setText(schedule.get(position).getAirline());
          holder.route.setText("DUB - " + schedule.get(position).getDestination());

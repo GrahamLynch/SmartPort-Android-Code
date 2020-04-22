@@ -26,7 +26,7 @@ public class ScheduleActivity extends AppCompatActivity {
     RecyclerView mRecyclerView;
     List<Schedule> schedule;
 
-    MainAdapter adapter;
+    ScehduleAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +42,6 @@ public class ScheduleActivity extends AppCompatActivity {
 
 
     }
-
-
-
-
-
-
 
 
 
@@ -79,7 +73,7 @@ public class ScheduleActivity extends AppCompatActivity {
                 }
 
                 mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                adapter = new MainAdapter(getApplicationContext() , schedule);
+                adapter = new ScehduleAdapter(getApplicationContext() , schedule);
                 mRecyclerView.setAdapter(adapter);
 
             }

@@ -2,6 +2,8 @@ package com.example.smartport;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Notification;
 import android.os.Bundle;
@@ -30,13 +32,19 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.example.smartport.App.CHANNEL_1_ID;
 
 public class PointsOfInterestActivity extends AppCompatActivity {
     private RequestQueue mQueue;
+    RecyclerView RecyclerView;
     TextView tView;
     Button btn;
+    PointsOfInterestAdapter adapter;
     private FirebaseAuth firebaseAuth;
+    List<PointsOfInterest> poiList;
     FirebaseUser user;
     String URL, destination;
     private FirebaseDatabase firebaseDatabase;
@@ -44,10 +52,12 @@ public class PointsOfInterestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_points_of_interest);
-
+        poiList = new ArrayList<>();
+        adapter = new PointsOfInterestAdapter(this,poiList);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = firebaseDatabase.getInstance();
         user = firebaseAuth.getCurrentUser();
+        RecyclerView = (RecyclerView) findViewById(R.id.poi_rview);
 
         DatabaseReference databaseReference = firebaseDatabase.getReference(FirebaseAuth.getInstance().getCurrentUser().getUid());
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -68,7 +78,7 @@ public class PointsOfInterestActivity extends AppCompatActivity {
                 else if (destination != null && destination.equals("New York")){
                     URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=40.716960,-74.007093&rankby=distance&type=point_of_interest&key=AIzaSyBWG5Tgu1yPgkuBZVSMBnuh-2WD-FYiD2E";
                 }
-                
+
                 System.out.println("Destination" + URL);
                 jsonParse(URL);
 
@@ -89,31 +99,40 @@ public class PointsOfInterestActivity extends AppCompatActivity {
 
         String newURL = url;
 
-        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, newURL, null, new Response.Listener<JSONArray>() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, newURL, null, new Response.Listener<JSONObject>() {
             @Override
-            public void onResponse(JSONArray response) {
+            public void onResponse(JSONObject response) {
+
                 try {
-                    Log.e("Response", response.toString());
-                    JSONArray jsonArray = response;
+                    JSONArray jsonArray = response.getJSONArray("results");
 
-                    for(int i =0; i<jsonArray.length(); i++){            //********Commented out for loop to only get first element searched
-                    JSONObject item = jsonArray.getJSONObject(i);
-                    String airline = item.getString("airline") + "\n";
 
-                    JSONObject jsonObject2 = item.getJSONObject("flight");
-                    String iatacode = jsonObject2.getString("iataNumber")+ "\n";
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject object = jsonArray.getJSONObject(i);
+                        PointsOfInterest poi = new PointsOfInterest();
+                        poi.setName(object.getString("name"));
+                        poi.setLocation(object.getString("vicinity"));
+                        poi.setImage(object.getString("icon"));
+                        poiList.add(poi);
 
-                   }
-                                //for loop closing brace
+                    }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
+
+
+                RecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                adapter = new PointsOfInterestAdapter(getApplicationContext(),poiList);
+                RecyclerView.setAdapter(adapter);
+
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("Response", error.toString());
+
 
             }
         });

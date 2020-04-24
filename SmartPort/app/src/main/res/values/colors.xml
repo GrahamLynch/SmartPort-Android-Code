@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="midDarkBlue">#1061E9 </color>
+    <color name="startBlue">#09c6df </color>
+    <color name="endBlue">#0bcce6 </color>
     <color name="darkBlue">#101FE9 </color>
     <color name="lightBlue">#10C3E9 </color>
     <color name="lightGrey">#ededed </color>

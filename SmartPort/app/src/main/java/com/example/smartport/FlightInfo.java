@@ -7,6 +7,8 @@ public class FlightInfo {
     String destination;
     String flightStatus;
     String landingTime;
+    String email;
+    String origin;
     String name;
 
 
@@ -14,13 +16,15 @@ public class FlightInfo {
 
     }
 
-    public FlightInfo(String chosenAirline, String currentAirlineOnRunway, String flightNumber, String destination, String flightStatus, String landingTime, String name) {
+    public FlightInfo(String chosenAirline, String currentAirlineOnRunway, String flightNumber, String destination, String flightStatus, String landingTime, String email, String origin, String name) {
         this.chosenAirline = chosenAirline;
         this.currentAirlineOnRunway = currentAirlineOnRunway;
         this.flightNumber = flightNumber;
         this.destination = destination;
         this.flightStatus = flightStatus;
         this.landingTime = landingTime;
+        this.email = email;
+        this.origin = origin;
         this.name = name;
     }
 
@@ -70,6 +74,22 @@ public class FlightInfo {
 
     public void setLandingTime(String landingTime) {
         this.landingTime = landingTime;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(String origin) {
+        this.origin = origin;
     }
 
     public String getName() {

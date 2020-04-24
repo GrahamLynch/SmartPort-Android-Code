@@ -2,7 +2,10 @@ package com.example.smartport;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,6 +20,7 @@ public class FlightInformationActivity extends AppCompatActivity {
     TextView airline_tv , gate_tv , route_tv , flightno_tv , status_tv, time_tv, terminal_tv;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
+    Button back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +32,7 @@ public class FlightInformationActivity extends AppCompatActivity {
         flightno_tv = (TextView) findViewById(R.id.flightNo_textView);
         status_tv = (TextView) findViewById(R.id.status_textView);
         time_tv = (TextView) findViewById(R.id.time_textView);
-
+        back = (Button) findViewById(R.id.back_btn);
         FirebaseUser user;
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = firebaseDatabase.getInstance();
@@ -74,6 +78,13 @@ public class FlightInformationActivity extends AppCompatActivity {
 
             }
 
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(FlightInformationActivity.this, MainActivity.class));
+            }
         });
 
 

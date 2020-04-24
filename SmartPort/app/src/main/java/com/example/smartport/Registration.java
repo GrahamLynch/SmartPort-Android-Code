@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,10 +21,10 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Registration extends AppCompatActivity {
     private EditText  password, email, name;
     private Button regButton;
-
+    ImageView back;
     private FirebaseAuth firebaseAuth;
     TextView login;
-    String airline, flightnumber, destination, passenger_name, flightStatus, landingTime, currentAirlineOnRunway;
+    String airline, flightnumber, destination, passenger_name, flightStatus, landingTime, currentAirlineOnRunway, passenger_email , origin;
 
 
     @Override
@@ -34,9 +35,11 @@ public class Registration extends AppCompatActivity {
         firebaseAuth =  FirebaseAuth.getInstance();
         password = (EditText)findViewById(R.id.password);
         email = (EditText)findViewById(R.id.email);
+        back = (ImageView) findViewById(R.id.goBack);
         airline = "";
         currentAirlineOnRunway = "";
         destination = "";
+        origin = "Dublin";
         flightStatus = "Not Landed";
         landingTime = "";
         flightnumber = "";
@@ -51,7 +54,7 @@ public class Registration extends AppCompatActivity {
             public void onClick(View view) {
 
                     //Register data to database
-                    String passenger_email  = email.getText().toString().trim();
+                    passenger_email  = email.getText().toString().trim();
                     String passenger_password = password.getText().toString().trim();
                     passenger_name = name.getText().toString().trim();
 
@@ -61,6 +64,7 @@ public class Registration extends AppCompatActivity {
                             if(task.isSuccessful()){
                                 sendUserData();
                                 new Intent(Registration.this, LoginActivity.class);
+                                Toast.makeText(Registration.this,  "Registration Successful", Toast.LENGTH_SHORT).show();
                             }else{
                                 Toast.makeText(Registration.this,  "Registration Unsuccessful", Toast.LENGTH_SHORT).show();
                             }
@@ -76,13 +80,20 @@ public class Registration extends AppCompatActivity {
             }
         });
 
+
+
     }
 
     private void sendUserData(){
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference myRef = firebaseDatabase.getReference(firebaseAuth.getUid());
-        FlightInfo userProfile = new FlightInfo(airline , currentAirlineOnRunway, flightnumber, destination, flightStatus, landingTime, passenger_name);
+        FlightInfo userProfile = new FlightInfo(airline , currentAirlineOnRunway, flightnumber, destination, flightStatus, landingTime, passenger_email, origin, passenger_name);
         myRef.setValue(userProfile);
+    }
+
+    public void goback(View view) {
+        Intent i = new Intent(Registration.this, LoginActivity.class);
+        startActivity(i);
     }
 }
 

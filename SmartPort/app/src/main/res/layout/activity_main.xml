@@ -33,6 +33,7 @@
                 android:src="@drawable/yourflights"
                 android:padding="10dp"/>
             <TextView
+                android:id="@+id/selectFlightTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
@@ -75,6 +76,7 @@
                     android:src="@drawable/information"
                     android:padding="10dp"/>
                 <TextView
+                    android:id="@+id/viewFlightInfoTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
@@ -124,6 +126,7 @@
                     android:src="@drawable/pointofinterest"
                     android:padding="10dp"/>
                 <TextView
+                    android:id="@+id/pointsOfInterestTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
@@ -167,6 +170,7 @@
                     android:padding="10dp"/>
 
                 <TextView
+                    android:id="@+id/scedhuleTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -216,6 +220,7 @@
                 android:src="@drawable/userprofile"
                 android:padding="10dp"/>
             <TextView
+                android:id="@+id/profileTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
@@ -254,6 +259,7 @@
                     android:padding="10dp"/>
 
                 <TextView
+                    android:id="@+id/logoutTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"

@@ -24,12 +24,8 @@ public class MainActivityTest {
     private MainActivity mActivity = null ;
 
     Instrumentation.ActivityMonitor flightsActivityMonitor = getInstrumentation().addMonitor(FlightsActivity.class.getName(),null,false);
-    Instrumentation.ActivityMonitor flightsInfoActivityMonitor = getInstrumentation().addMonitor(FlightInformationActivity.class.getName(),null,false);
-    Instrumentation.ActivityMonitor pointsOfInterestActivityMonitor = getInstrumentation().addMonitor(PointsOfInterestActivity.class.getName(),null,false);
-    Instrumentation.ActivityMonitor scheduleActivityMonitor = getInstrumentation().addMonitor(ScheduleActivity.class.getName(),null,false);
-    Instrumentation.ActivityMonitor userProfileActivityMonitor = getInstrumentation().addMonitor(UserProfileActivity.class.getName(),null,false);
-    Instrumentation.ActivityMonitor loginActivityMonitor = getInstrumentation().addMonitor(LoginActivity.class.getName(),null,false);
-    //yourFlightInformation
+
+
     @Before
     public void setUp() throws Exception{
         mActivity = mActivityTestRule.getActivity();
@@ -66,9 +62,6 @@ public class MainActivityTest {
         Activity flightsActivity =  getInstrumentation().waitForMonitorWithTimeout(flightsActivityMonitor,5000);
         assertNotNull(flightsActivity);
         flightsActivity.finish();
-
-
-
 
 
     }

@@ -25,22 +25,15 @@ public class ScheduleActivity extends AppCompatActivity {
     private RequestQueue mQueue;
     RecyclerView mRecyclerView;
     List<Schedule> schedule;
-
     ScehduleAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule_);
-
-
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         schedule = new ArrayList<>();
-
-
         jsonParse();
-
-
     }
 
 
@@ -64,8 +57,6 @@ public class ScheduleActivity extends AppCompatActivity {
                         schedules.setDestination(arrivalObject.getString("iataCode"));
                         schedules.setStatus(data.getString("status"));
                         schedule.add(schedules);
-
-
 
                     } catch (JSONException e) {
                         e.printStackTrace();

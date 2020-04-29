@@ -9,6 +9,9 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+import androidx.test.espresso.Espresso;
+import androidx.test.espresso.action.ViewActions;
+import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.rule.ActivityTestRule;
 
 import static androidx.test.espresso.Espresso.onView;
@@ -58,7 +61,7 @@ public class MainActivityTest {
         assertNotNull(mActivity.findViewById(R.id.userProfile));
         assertNotNull(mActivity.findViewById(R.id.logout));
 
-        onView(withId(R.id.yourFlights)).perform(click());
+        onView(ViewMatchers.withId(R.id.yourFlights)).perform(ViewActions.click());
         Activity flightsActivity =  getInstrumentation().waitForMonitorWithTimeout(flightsActivityMonitor,5000);
         assertNotNull(flightsActivity);
         flightsActivity.finish();

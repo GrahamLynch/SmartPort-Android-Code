@@ -40,8 +40,6 @@ import static com.example.smartport.App.CHANNEL_1_ID;
 public class PointsOfInterestActivity extends AppCompatActivity {
     private RequestQueue mQueue;
     RecyclerView RecyclerView;
-    TextView tView;
-    Button btn;
     PointsOfInterestAdapter adapter;
     private FirebaseAuth firebaseAuth;
     List<PointsOfInterest> poiList;

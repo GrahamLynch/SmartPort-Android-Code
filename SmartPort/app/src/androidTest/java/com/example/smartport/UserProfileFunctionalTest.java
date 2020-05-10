@@ -30,13 +30,13 @@ import static org.hamcrest.Matchers.is;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class ViewFlightInfoUITest {
+public class UserProfileFunctionalTest {
 
     @Rule
     public ActivityTestRule<LoginActivity> mActivityTestRule = new ActivityTestRule<>(LoginActivity.class);
 
     @Test
-    public void viewFlightInfoUITest() {
+    public void userProfileUITest() {
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.email),
                         childAtPosition(
@@ -55,7 +55,7 @@ public class ViewFlightInfoUITest {
                                         1),
                                 2),
                         isDisplayed()));
-        appCompatEditText2.perform(replaceText("grahamlynch20@test.com"), closeSoftKeyboard());
+        appCompatEditText2.perform(replaceText("grahamlynch20@hotmail.com"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText3 = onView(
                 allOf(withId(R.id.password),
@@ -77,75 +77,25 @@ public class ViewFlightInfoUITest {
                         isDisplayed()));
         appCompatButton.perform(click());
 
-        ViewInteraction appCompatEditText4 = onView(
-                allOf(withId(R.id.email), withText("grahamlynch20@test.com"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.LinearLayout")),
-                                        1),
-                                2),
-                        isDisplayed()));
-        appCompatEditText4.perform(click());
-
-        ViewInteraction appCompatEditText5 = onView(
-                allOf(withId(R.id.email), withText("grahamlynch20@test.com"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.LinearLayout")),
-                                        1),
-                                2),
-                        isDisplayed()));
-        appCompatEditText5.perform(click());
-
-        ViewInteraction appCompatEditText6 = onView(
-                allOf(withId(R.id.email), withText("grahamlynch20@test.com"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.LinearLayout")),
-                                        1),
-                                2),
-                        isDisplayed()));
-        appCompatEditText6.perform(replaceText("grahamlynch20@hotmail.com"));
-
-        ViewInteraction appCompatEditText7 = onView(
-                allOf(withId(R.id.email), withText("grahamlynch20@hotmail.com"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.LinearLayout")),
-                                        1),
-                                2),
-                        isDisplayed()));
-        appCompatEditText7.perform(closeSoftKeyboard());
-
-        ViewInteraction appCompatButton2 = onView(
-                allOf(withId(R.id.loginBtn), withText("Login"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withClassName(is("android.widget.LinearLayout")),
-                                        1),
-                                4),
-                        isDisplayed()));
-        appCompatButton2.perform(click());
-
         ViewInteraction cardView = onView(
-                allOf(withId(R.id.yourFlightInformation),
+                allOf(withId(R.id.userProfile),
                         childAtPosition(
                                 childAtPosition(
                                         withClassName(is("android.widget.LinearLayout")),
-                                        0),
-                                1),
+                                        2),
+                                0),
                         isDisplayed()));
         cardView.perform(click());
 
-        ViewInteraction appCompatButton3 = onView(
+        ViewInteraction appCompatButton2 = onView(
                 allOf(withId(R.id.back_btn), withText("Back"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
                                         0),
-                                6),
+                                2),
                         isDisplayed()));
-        appCompatButton3.perform(click());
+        appCompatButton2.perform(click());
     }
 
     private static Matcher<View> childAtPosition(

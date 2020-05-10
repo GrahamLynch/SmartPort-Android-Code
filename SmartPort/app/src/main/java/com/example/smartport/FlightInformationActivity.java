@@ -17,7 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class FlightInformationActivity extends AppCompatActivity {
-    TextView airline_tv , gate_tv , route_tv , flightno_tv , status_tv, time_tv, terminal_tv;
+    TextView airline_tv , gate_tv , route_tv , flightno_tv , status_tv, time_tv;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
     Button back;
@@ -67,9 +67,6 @@ public class FlightInformationActivity extends AppCompatActivity {
                     time_tv.setText("15:00");
 
                 }
-
-
-
 
             }
 

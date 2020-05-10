@@ -18,7 +18,6 @@ import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
 
 import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.Espresso.pressBack;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
@@ -31,13 +30,13 @@ import static org.hamcrest.Matchers.is;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class PointsOfInterestUITest {
+public class ChooseFlightFunctionalTest {
 
     @Rule
     public ActivityTestRule<LoginActivity> mActivityTestRule = new ActivityTestRule<>(LoginActivity.class);
 
     @Test
-    public void pointsOfInterestUITest() {
+    public void chooseFlightUITest() {
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.email),
                         childAtPosition(
@@ -79,16 +78,24 @@ public class PointsOfInterestUITest {
         appCompatButton.perform(click());
 
         ViewInteraction cardView = onView(
-                allOf(withId(R.id.pointsOfInterest),
+                allOf(withId(R.id.yourFlights),
                         childAtPosition(
                                 childAtPosition(
                                         withClassName(is("android.widget.LinearLayout")),
-                                        1),
+                                        0),
                                 0),
                         isDisplayed()));
         cardView.perform(click());
 
-        pressBack();
+        ViewInteraction appCompatButton2 = onView(
+                allOf(withId(R.id.flight_button), withText("Choose this Flight"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.rv_list),
+                                        1),
+                                1),
+                        isDisplayed()));
+        appCompatButton2.perform(click());
     }
 
     private static Matcher<View> childAtPosition(

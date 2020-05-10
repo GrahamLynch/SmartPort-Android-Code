@@ -65,9 +65,9 @@ public class MainActivityTest {
         Activity flightsActivity =  getInstrumentation().waitForMonitorWithTimeout(flightsActivityMonitor,5000);
         assertNotNull(flightsActivity);
         flightsActivity.finish();
-
-
     }
+
+
 
     @After
     public void tearDown() throws Exception{

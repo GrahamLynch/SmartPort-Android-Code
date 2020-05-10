@@ -7,21 +7,18 @@ import android.view.ViewParent;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
-import org.hamcrest.Matchers;
 import org.hamcrest.TypeSafeMatcher;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import androidx.test.espresso.Espresso;
 import androidx.test.espresso.ViewInteraction;
-import androidx.test.espresso.action.ViewActions;
-import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.Espresso.pressBack;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
@@ -34,52 +31,64 @@ import static org.hamcrest.Matchers.is;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class LoginUITest {
+public class ViewScheduleFunctionalTest {
 
     @Rule
     public ActivityTestRule<LoginActivity> mActivityTestRule = new ActivityTestRule<>(LoginActivity.class);
 
     @Test
-    public void loginUITest() {
-        ViewInteraction appCompatEditText = Espresso.onView(
-                Matchers.allOf(ViewMatchers.withId(R.id.email),
+    public void viewScedhuleUITest() {
+        ViewInteraction appCompatEditText = onView(
+                allOf(withId(R.id.email),
                         childAtPosition(
                                 childAtPosition(
-                                        ViewMatchers.withClassName(Matchers.is("android.widget.LinearLayout")),
+                                        withClassName(is("android.widget.LinearLayout")),
                                         1),
                                 2),
-                        ViewMatchers.isDisplayed()));
-        appCompatEditText.perform(ViewActions.click());
+                        isDisplayed()));
+        appCompatEditText.perform(click());
 
-        ViewInteraction appCompatEditText2 = Espresso.onView(
-                Matchers.allOf(ViewMatchers.withId(R.id.email),
+        ViewInteraction appCompatEditText2 = onView(
+                allOf(withId(R.id.email),
                         childAtPosition(
                                 childAtPosition(
-                                        ViewMatchers.withClassName(Matchers.is("android.widget.LinearLayout")),
+                                        withClassName(is("android.widget.LinearLayout")),
                                         1),
                                 2),
-                        ViewMatchers.isDisplayed()));
-        appCompatEditText2.perform(ViewActions.replaceText("grahamlynch20@hotmail.com"), ViewActions.closeSoftKeyboard());
+                        isDisplayed()));
+        appCompatEditText2.perform(replaceText("grahamlynch20@hotmail.com"), closeSoftKeyboard());
 
-        ViewInteraction appCompatEditText3 = Espresso.onView(
-                Matchers.allOf(ViewMatchers.withId(R.id.password),
+        ViewInteraction appCompatEditText3 = onView(
+                allOf(withId(R.id.password),
                         childAtPosition(
                                 childAtPosition(
-                                        ViewMatchers.withClassName(Matchers.is("android.widget.LinearLayout")),
+                                        withClassName(is("android.widget.LinearLayout")),
                                         1),
                                 3),
-                        ViewMatchers.isDisplayed()));
-        appCompatEditText3.perform(ViewActions.replaceText("rivervalleyswords"), ViewActions.closeSoftKeyboard());
+                        isDisplayed()));
+        appCompatEditText3.perform(replaceText("rivervalleyswords"), closeSoftKeyboard());
 
-        ViewInteraction appCompatButton = Espresso.onView(
-                Matchers.allOf(ViewMatchers.withId(R.id.loginBtn), ViewMatchers.withText("Login"),
+        ViewInteraction appCompatButton = onView(
+                allOf(withId(R.id.loginBtn), withText("Login"),
                         childAtPosition(
                                 childAtPosition(
-                                        ViewMatchers.withClassName(Matchers.is("android.widget.LinearLayout")),
+                                        withClassName(is("android.widget.LinearLayout")),
                                         1),
                                 4),
-                        ViewMatchers.isDisplayed()));
-        appCompatButton.perform(ViewActions.click());
+                        isDisplayed()));
+        appCompatButton.perform(click());
+
+        ViewInteraction cardView = onView(
+                allOf(withId(R.id.scedhule),
+                        childAtPosition(
+                                childAtPosition(
+                                        withClassName(is("android.widget.LinearLayout")),
+                                        1),
+                                1),
+                        isDisplayed()));
+        cardView.perform(click());
+
+        pressBack();
     }
 
     private static Matcher<View> childAtPosition(

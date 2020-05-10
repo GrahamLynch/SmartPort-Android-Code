@@ -30,7 +30,7 @@ import static org.hamcrest.Matchers.is;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class LoginAndRegisterUITest {
+public class LoginAndRegisterFunctionalTest {
 
     @Rule
     public ActivityTestRule<LoginActivity> mActivityTestRule = new ActivityTestRule<>(LoginActivity.class);
@@ -75,7 +75,7 @@ public class LoginAndRegisterUITest {
                                         1),
                                 2),
                         isDisplayed()));
-        appCompatEditText3.perform(replaceText("robert123@test.com"), closeSoftKeyboard());
+        appCompatEditText3.perform(replaceText("robert1238@test.com"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText4 = onView(
                 allOf(withId(R.id.password),
@@ -134,7 +134,7 @@ public class LoginAndRegisterUITest {
                                         1),
                                 2),
                         isDisplayed()));
-        appCompatEditText6.perform(replaceText("robert123@test.com"), closeSoftKeyboard());
+        appCompatEditText6.perform(replaceText("robert1238@test.com"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText7 = onView(
                 allOf(withId(R.id.password),

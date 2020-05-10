@@ -24,11 +24,11 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
-    private TextView studentRegistration, emailAddress, password;
+    private TextView emailAddress, password;
     ImageView back;
     FirebaseUser user;
     Button login;
-    int counter = 5;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,27 +75,14 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
 
 
-                    if (counter == 0) {
-                        login.setEnabled(false);
-                    }
+
                 }
             }
         });
 
 
     }
-    private void checkEmailVerification(){
-        FirebaseUser firebaseUser = firebaseAuth.getInstance().getCurrentUser();
-        Boolean emailflag = firebaseUser.isEmailVerified();
 
-        if (emailflag) {
-            finish();
-            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-        } else {
-            Toast.makeText(this, "Verify your Email", Toast.LENGTH_SHORT).show();
-            firebaseAuth.signOut();
-        }
-    }
 
     public void goback(View view) {
         Intent i = new Intent(LoginActivity.this, Registration.class);

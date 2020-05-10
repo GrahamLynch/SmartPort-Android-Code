@@ -31,13 +31,13 @@ import static org.hamcrest.Matchers.is;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class ViewScedhuleUITest {
+public class PointsOfInterestFunctionalTest {
 
     @Rule
     public ActivityTestRule<LoginActivity> mActivityTestRule = new ActivityTestRule<>(LoginActivity.class);
 
     @Test
-    public void viewScedhuleUITest() {
+    public void pointsOfInterestUITest() {
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.email),
                         childAtPosition(
@@ -79,12 +79,12 @@ public class ViewScedhuleUITest {
         appCompatButton.perform(click());
 
         ViewInteraction cardView = onView(
-                allOf(withId(R.id.scedhule),
+                allOf(withId(R.id.pointsOfInterest),
                         childAtPosition(
                                 childAtPosition(
                                         withClassName(is("android.widget.LinearLayout")),
                                         1),
-                                1),
+                                0),
                         isDisplayed()));
         cardView.perform(click());
 

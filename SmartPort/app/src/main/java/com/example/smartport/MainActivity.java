@@ -26,11 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private NotificationManagerCompat notificationManager;
     private CardView selectedFlights, flightInformation, pointsOfInterest, userProfile, logout, flightScedhule;
     private String chosenAirline, flightStatus, currentAirlineOnRunway;
-    private int num1 = 1;
     FirebaseUser user;
-    Boolean status = true;
-    private TextView header;
-    private String Airline;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
 
@@ -72,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Notification notification = new NotificationCompat.Builder(MainActivity.this, CHANNEL_1_ID)
                             .setSmallIcon(R.drawable.ryanair)
                             .setContentTitle("Ryanair")
-                            .setContentText("Ryanair has landed!")
+                            .setContentText("Your Ryanair flight has landed!")
                             .setPriority(NotificationCompat.PRIORITY_HIGH)
                             .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                             .build();
@@ -83,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Notification notification = new NotificationCompat.Builder(MainActivity.this, CHANNEL_1_ID)
                             .setSmallIcon(R.drawable.aerlingus)
                             .setContentTitle("Aer Lingus")
-                            .setContentText("Aer Lingus has landed!")
+                            .setContentText("Your Aer Lingus flight has landed!")
                             .setPriority(NotificationCompat.PRIORITY_HIGH)
                             .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                             .build();

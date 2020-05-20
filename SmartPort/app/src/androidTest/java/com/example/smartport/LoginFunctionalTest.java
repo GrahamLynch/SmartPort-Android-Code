@@ -69,7 +69,7 @@ public class LoginFunctionalTest {
                                         1),
                                 3),
                         ViewMatchers.isDisplayed()));
-        appCompatEditText3.perform(ViewActions.replaceText("rivervalleyswords"), ViewActions.closeSoftKeyboard());
+        appCompatEditText3.perform(ViewActions.replaceText("nationalcollegeofireland"), ViewActions.closeSoftKeyboard());
 
         ViewInteraction appCompatButton = Espresso.onView(
                 Matchers.allOf(ViewMatchers.withId(R.id.loginBtn), ViewMatchers.withText("Login"),

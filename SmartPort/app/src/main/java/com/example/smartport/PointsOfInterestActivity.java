@@ -65,16 +65,16 @@ public class PointsOfInterestActivity extends AppCompatActivity {
                 destination = userProfile.getDestination();
 
                 if(destination != null && destination.equals("Tenerife")){
-                    URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=28.062587,-16.726852&rankby=distance&type=point_of_interest&key=AIzaSyBWG5Tgu1yPgkuBZVSMBnuh-2WD-FYiD2E";
+                    URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=28.062587,-16.726852&rankby=distance&type=point_of_interest&key=key";
                 }
                 else if(destination != null && destination.equals("London")){
-                    URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=51.546106,-0.119543&rankby=distance&type=point_of_interest&key=AIzaSyBWG5Tgu1yPgkuBZVSMBnuh-2WD-FYiD2E";
+                    URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=51.546106,-0.119543&rankby=distance&type=point_of_interest&key=key";
                 }
                 else if (destination != null && destination.equals("Paris")){
-                    URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=48.858549,2.348204&rankby=distance&type=point_of_interest&key=AIzaSyBWG5Tgu1yPgkuBZVSMBnuh-2WD-FYiD2E";
+                    URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=48.858549,2.348204&rankby=distance&type=point_of_interest&key=key";
                 }
                 else if (destination != null && destination.equals("New York")){
-                    URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=40.716960,-74.007093&rankby=distance&type=point_of_interest&key=AIzaSyBWG5Tgu1yPgkuBZVSMBnuh-2WD-FYiD2E";
+                    URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=40.716960,-74.007093&rankby=distance&type=point_of_interest&key=key";
                 }
 
                 System.out.println("Destination" + URL);
